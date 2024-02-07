@@ -5,10 +5,21 @@
         <a href="https://www.maths.tcd.ie/~lebed/Galperin.%20Playing%20pool%20with%20pi.pdf">
             Check this out!
         </a>
+        <style>
+            .redplaceholder::placeholder {
+                /*color: #b2cde0*/
+                color: red;
+                opacity: 70%;
+            }
+        </style>
     </head>
     <body>
         <div id="mainDiv" class="p5Canvas">
         </div>
+	<div id="input">
+    	    <button style="height: 57px" onclick="resetDraw()">Change Mass</button>	
+	    <input id="inputfield" type="text" placeholder="Enter text here" style="height: 50px; font-size: 16pt"/>
+	</div>
         <script type="text/javascript" src="./p5.min.js"></script>
         <script type="text/javascript" src="./square.js"></script>
         <script type="text/javascript" src="./main.js"></script>

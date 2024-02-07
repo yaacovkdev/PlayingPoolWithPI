@@ -6,14 +6,55 @@ let Wall = {
   width: 200,
   color: 'rgba(0,0,0,1)',
 }
+//                             v- Change this value n to get n+1 the digit of PI.
+let square2size = Math.pow(100,5);
 
-let square1 = new Square(1,0);
-//                                    v - Change this value n to get n+1 the digit of PI.
-let square2 = new Square(Math.pow(100,9), -10);
+let square1;
+//                                    
+let square2;
 
-let collision = 0;
+let collision;
 
-let end_cond = false;
+let end_cond;
+
+let end_event;
+
+function resetDraw(){
+	const text_field = document.querySelector("#inputfield");
+
+  //sequence for setting Invalid Placeholder
+  function setInvalidPlace(){
+    text_field.value = "";
+    text_field.classList.add("redplaceholder");
+    text_field.placeholder = "Invalid Input!";
+  }
+
+  //sequence for setting Valid Placeholder
+  function setValidPlace(){
+    text_field.classList.remove("redplaceholder");
+    text_field.placeholder = "Enter mass here";
+  }
+
+  if(text_field.classList.contains("redplaceholder")) setValidPlace();
+  
+  var textval = text_field.value;
+  var newsq2size = 0;
+  if(textval == null || textval == '') return;
+  if(textval.includes("^")){
+    var [val, exp] = textval.split("^");
+    newsq2size = Math.pow(parseFloat(val), parseFloat(exp));
+  } else {
+    newsq2size = parseFloat(textval);
+  }
+  if(isNaN(newsq2size) || newsq2size == null){
+    setInvalidPlace();
+    return;
+  }
+  square2size = newsq2size;
+
+  initEnv();
+  loop();
+}
 
 function fillWall(){
   push();
@@ -25,10 +66,16 @@ function fillWall(){
 }
 
 function initEnv(){
+  collision = 0;
+  end_cond = false;
+  square1 = new Square(1,0);
+  square2 = new Square(square2size, -10);
   square1.x = 300+Wall.width;
   square2.x = 700+Wall.width;
 
   combined_M = square1.mass + square2.mass;
+
+  end_event = window.setInterval(endRender, 10000);
 }
 
 function fillSquares(){
@@ -179,5 +226,3 @@ window.onresize = function(){
   resizeCanvas(windowWidth, windowHeight);
   Wall.height = windowHeight;
 }
-
-let end_event = window.setInterval(endRender, 10000);
