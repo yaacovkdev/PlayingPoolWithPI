@@ -4,14 +4,24 @@ and one object is stationary in front of an immovable wall while the other objec
 All of this is happening on a frictionless surface without any other Forces of resistance, in the system.
 
 Table of Correlation
+
 n | Total Collisions
+
 0 | 3  
+
 1 | 31
+
 2 | 314
+
 3 | 3141
+
 4 | 31415
+
 . | 314159...
+
 .
+
 .
+
 
 In the field below you can enter numerical value for mass of second object. You may also enter in the format: a ^ b, where you enter some float or int for a and b and use the character '^' to make b the exponent of a.
